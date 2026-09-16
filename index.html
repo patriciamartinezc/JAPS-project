@@ -1,4 +1,135 @@
 <!DOCTYPE html>
-<html lang="en"></html>
+<!--
+  Session 3 Lab - Structuring a Page (AF2)
+  Web Application Programming (G247) - CUNEF Escuela Politecnica Superior
+  Pair: Jimena Gil - [PARTNER NAME HERE]
+  Page: Homepage of the JAPS clothing site
+-->
+<html lang="en">
 <head>
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <title>JAPS - Everyday clothing made to last</title>
+</head>
+<body>
+
+  <header>
+    <h1>JAPS</h1>
+    <p>Everyday clothing made to last. Designed in Madrid, sewn in Portugal.</p>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collections.html">Collections</a></li>
+        <li><a href="lookbook.html">Lookbook</a></li>
+        <li><a href="stores.html">Stores</a></li>
+        <li><a href="login.html">Log in</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Teaser section: the full catalogue lives on collections.html -->
+    <section id="new-in">
+      <h2>New in this week</h2>
+
+      <p>
+        Three new pieces landed on Monday, all cut from the same heavyweight
+        cotton we use for our workwear line. Stock is limited to
+        <strong>40 units per size</strong>, so sizes sell out quickly.
+        <a href="collections.html">Browse the full collection</a> to see every
+        piece we currently make.
+      </p>
+
+      <!-- An <article> because a single product card makes sense on its own -->
+      <article>
+        <h3>The Linen Overshirt</h3>
+
+        <img src="https://placehold.co/600x400?text=Linen+Overshirt"
+             alt="Beige linen overshirt photographed flat on a grey background"
+             width="600" height="400">
+
+        <p>
+          A boxy overshirt in washed European linen, with a single chest pocket
+          and corozo buttons. It works as a light jacket in spring and as a
+          layer under a coat in winter.
+          <!-- <span> marks the price so it can be styled/reused later without
+               changing the meaning of the sentence -->
+          Priced at <span>89 EUR</span>.
+        </p>
+
+        <h4>Details</h4>
+        <ul>
+          <li>100% washed linen, 190 gsm</li>
+          <li>Corozo buttons, no plastic</li>
+          <li>Sizes XS to XXL</li>
+          <li>Colours: sand, off-white, deep navy</li>
+        </ul>
+
+        <p><a href="collections.html#shirts">See all shirts and overshirts</a></p>
+      </article>
+    </section>
+
+    <!-- Teaser section: links into a fragment of another page -->
+    <section id="season">
+      <h2>Autumn 2026 lookbook</h2>
+
+      <p>
+        This season we photographed the whole collection in a single afternoon on
+        the roof of our Madrid workshop. The idea was to show the clothes
+        <em>as people actually wear them</em>, wrinkles included.
+        <a href="lookbook.html#autumn" title="Jump straight to the Autumn 2026 photographs">Jump
+        to the autumn photographs</a>.
+      </p>
+
+      <img src="https://placehold.co/600x360?text=Autumn+2026"
+           alt="Two models wearing JAPS coats on a rooftop at sunset"
+           width="600" height="360">
+    </section>
+
+    <section id="how-we-make-it">
+      <h2>How we make our clothes</h2>
+
+      <p>
+        JAPS runs on small batches. We produce twice a year, we never discount,
+        and we publish the cost breakdown of every garment. If a piece does not
+        sell, we remake it in a different colour instead of destroying it.
+      </p>
+
+      <ol>
+        <li>We design and pattern the garment in Madrid.</li>
+        <li>We order fabric from mills in Spain, Portugal and Italy.</li>
+        <li>A family-run workshop near Porto sews the batch.</li>
+        <li>We ship directly to you, with no middle warehouse.</li>
+      </ol>
+
+      <p>
+        Repairs are free for life. Bring a worn piece into any of our
+        <a href="stores.html">three stores</a> and we will mend it while you wait.
+      </p>
+    </section>
+
+    <!-- Tangential content, so <aside> rather than another <section> -->
+    <aside>
+      <h2>Not sure about your size?</h2>
+      <p>
+        Our shirts run one size large on purpose. If you are between two sizes,
+        take the smaller one. You can also email
+        <a href="mailto:fit@japs.example">fit@japs.example</a> with your
+        measurements and we will answer within a day.
+      </p>
+    </aside>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 JAPS. All rights reserved.</p>
+    <ul>
+      <li><a href="index.html">Back to homepage</a></li>
+      <li><a href="stores.html#contact">Contact us</a></li>
+      <li><a href="https://www.instagram.com/">Follow JAPS on Instagram</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!--
+  Session 3 Lab - Structuring a Page (AF2)
+  Web Application Programming (G247) - CUNEF Escuela Politecnica Superior
+  Pair: Jimena Gil - [PARTNER NAME HERE]
+  Page: Login - front-end only form, no action attribute (Block II will wire it up)
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Log in - JAPS</title>
+</head>
+<body>
+
+  <header>
+    <h1>Log in</h1>
+    <p>Sign in to see your orders, saved sizes and repair tickets.</p>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collections.html">Collections</a></li>
+        <li><a href="lookbook.html">Lookbook</a></li>
+        <li><a href="stores.html">Stores</a></li>
+        <li><a href="login.html">Log in</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="sign-in">
+      <h2>Sign in to your account</h2>
+
+      <p>
+        Use the email address you ordered with. If you have never bought from us,
+        you do not need an account to shop -
+        <a href="collections.html">browse the collections</a> and check out as a
+        guest instead.
+      </p>
+
+      <!-- Front-end only: no action attribute, this form submits nowhere yet -->
+      <form>
+        <p>
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email"
+                 placeholder="you@example.com" required>
+        </p>
+
+        <p>
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password"
+                 minlength="8" required
+                 title="At least 8 characters">
+        </p>
+
+        <p>
+          <label for="remember">Keep me signed in on this device</label>
+          <input type="checkbox" id="remember" name="remember">
+        </p>
+
+        <p>
+          <button type="submit">Sign in</button>
+        </p>
+      </form>
+
+      <p>
+        Forgotten your password? Email
+        <a href="mailto:hello@japs.example">hello@japs.example</a> and we will
+        send you a reset link. We <strong>never</strong> ask for your password by
+        email.
+      </p>
+    </section>
+
+    <section id="account-benefits">
+      <h2>What an account gives you</h2>
+
+      <p>
+        A JAPS account is mostly a record of what you already own, so our tailors
+        know which fabric a piece was cut from when you bring it in to be mended.
+      </p>
+
+      <ul>
+        <li>Your order history and invoices</li>
+        <li>Your saved sizes, per garment</li>
+        <li>Restock emails for pieces you marked as <span>sold out</span></li>
+        <li>The status of any repair you left in a store</li>
+      </ul>
+
+      <p>
+        We store nothing else. You can delete your account from this page at any
+        time and we keep <em>no</em> copy of your data afterwards. We follow the
+        guidance published by the
+        <a href="https://www.aepd.es/">Spanish Data Protection Agency</a>.
+      </p>
+    </section>
+
+    <aside>
+      <h2>Trouble signing in?</h2>
+      <p>
+        Accounts created before 2024 were migrated and may need a password reset.
+        Our <a href="stores.html#contact">contact details</a> are on the stores
+        page.
+      </p>
+    </aside>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 JAPS. All rights reserved.</p>
+    <ul>
+      <li><a href="index.html">Back to homepage</a></li>
+      <li><a href="stores.html#contact">Contact us</a></li>
+      <li><a href="https://www.instagram.com/">Follow JAPS on Instagram</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>
