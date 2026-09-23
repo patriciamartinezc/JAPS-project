@@ -1,0 +1,539 @@
+/*
+  japs.css - visual design for the whole JAPS site
+  Web Application Programming (G247) - CUNEF Escuela Politecnica Superior
+  Pair: Jimena Gil - [PARTNER NAME HERE]
+
+  Loads after japs-logo.css, so anything repeated here wins.
+  Colours are taken from the logo: house pink #C2185B and cream #EFE6D8.
+*/
+
+/* ---------------------------------------------------------------------
+   0. BRAND TOKENS
+   Every colour and font used on the site is named once here, so changing
+   the brand means editing this block and nothing else.
+--------------------------------------------------------------------- */
+:root {
+  --pink: #C2185B;          /* house pink, from the logo */
+  --pink-dark: #961346;     /* hover state, a step darker */
+  --pink-tint: #FCEBF1;     /* very light wash for callouts */
+  --cream: #EFE6D8;         /* logo cream, used on dark backgrounds */
+  --ink: #2B2118;           /* body text, a warm near-black */
+  --ink-soft: #6B5E52;      /* captions and secondary text */
+  --page: #FBF7F3;          /* page background */
+  --card: #FFFFFF;          /* cards and the form sit on white */
+  --line: #E6DCCF;          /* hairline borders */
+  --plum: #2A1119;          /* footer background */
+
+  --serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --sans: "Jost", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+
+  --radius: 10px;
+  --shadow: 0 1px 3px rgba(43, 33, 24, 0.06);
+  --shadow-lift: 0 10px 24px rgba(43, 33, 24, 0.12);
+}
+
+
+/* ---------------------------------------------------------------------
+   1. RESET
+--------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth; /* so #autumn and #contact links glide */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--page);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+/* Fragment targets stop just below the top edge instead of touching it */
+[id] {
+  scroll-margin-top: 1.5rem;
+}
+
+
+/* ---------------------------------------------------------------------
+   2. TYPE SCALE
+   Headings in the serif, everything else in the sans. Sizes step down
+   h1 > h2 > h3 > h4 so the visual hierarchy matches the HTML outline.
+--------------------------------------------------------------------- */
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.75rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 0 0 0.4rem;
+}
+
+h4 {
+  font-size: 0.8rem;
+  font-family: var(--sans);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 1.25rem 0 0.4rem;
+}
+
+/* A short pink rule under every section heading */
+main h2::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 3px;
+  margin-top: 0.6rem;
+  background-color: var(--pink);
+  border-radius: 2px;
+}
+
+p {
+  margin: 0 0 1rem;
+  max-width: 68ch; /* stops long lines from becoming hard to read */
+}
+
+strong {
+  font-weight: 600;
+  color: var(--pink);
+}
+
+em {
+  font-family: var(--serif);
+  font-style: italic;
+}
+
+/* Prices, marked up as <span class="price"> in the HTML */
+.price {
+  font-weight: 600;
+  color: var(--pink);
+  white-space: nowrap; /* never break "89 EUR" across two lines */
+}
+
+
+/* ---------------------------------------------------------------------
+   3. LINKS
+--------------------------------------------------------------------- */
+a {
+  color: var(--pink);
+  text-decoration-color: rgba(194, 24, 91, 0.35);
+  text-underline-offset: 3px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+a:hover,
+a:focus {
+  color: var(--pink-dark);
+  text-decoration-color: currentColor;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+
+/* ---------------------------------------------------------------------
+   4. HEADER (Flexbox)
+   Brand lockup on the left, nav on the right, tagline on its own line
+   underneath (it is given a full-width flex-basis and sent to the end).
+--------------------------------------------------------------------- */
+header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  padding: 1.5rem clamp(1rem, 4vw, 3rem);
+  background-color: var(--card);
+  border-bottom: 1px solid var(--line);
+}
+
+/* japs-logo.css sets 96px; 64px sits better next to the title */
+.brand-logo {
+  width: 64px;
+  height: 64px;
+}
+
+header > p {
+  flex-basis: 100%;
+  order: 3;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+
+/* ---------------------------------------------------------------------
+   5. NAV LINKS (Flexbox)
+   Small uppercase sans links, with the underline growing on hover.
+--------------------------------------------------------------------- */
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  display: inline-block;
+  padding-bottom: 3px;
+  color: var(--ink);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.18s ease, color 0.18s ease;
+}
+
+nav a:hover,
+nav a:focus {
+  color: var(--pink);
+  border-bottom-color: var(--pink);
+}
+
+
+/* ---------------------------------------------------------------------
+   6. PAGE LAYOUT (Grid)
+   One centred column of sections. Inside a section, the articles flow
+   into an auto-fit grid: one article stretches full width, two or three
+   sit side by side. Everything that is not an article (headings, text,
+   lists, banner images) spans the whole row.
+--------------------------------------------------------------------- */
+main {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 4vw, 3rem);
+}
+
+section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  /* items stretch by default, so cards sharing a row end up the same height */
+}
+
+section > :not(article) {
+  grid-column: 1 / -1;
+}
+
+/* Banner images that sit directly in a section, not inside a card */
+section > img {
+  width: 100%;
+  height: clamp(220px, 32vw, 360px);
+  object-fit: cover;
+  border-radius: var(--radius);
+  display: block;
+}
+
+
+/* ---------------------------------------------------------------------
+   7. CARDS
+   Every <article> is a product or store card: white, hairline border,
+   rounded, and lifted slightly on hover.
+--------------------------------------------------------------------- */
+article {
+  background-color: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+  height: 100%;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+article:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lift);
+}
+
+article img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+  margin-bottom: 0.9rem;
+  background-color: var(--pink-tint);
+}
+
+article p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ---------------------------------------------------------------------
+   8. LISTS
+--------------------------------------------------------------------- */
+main ul,
+main ol {
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+}
+
+main li {
+  margin-bottom: 0.35rem;
+}
+
+main li::marker {
+  color: var(--pink);
+  font-weight: 600;
+}
+
+
+/* ---------------------------------------------------------------------
+   9. ASIDE
+   Tangential content, so it reads as a tinted callout rather than a
+   section: pink wash, pink edge, no rule under the heading.
+--------------------------------------------------------------------- */
+aside {
+  background-color: var(--pink-tint);
+  border-left: 4px solid var(--pink);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 3rem;
+}
+
+aside h2 {
+  font-size: 1.15rem;
+  margin-top: 0;
+}
+
+aside h2::after {
+  display: none;
+}
+
+aside p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ---------------------------------------------------------------------
+   10. THE LOGIN FORM
+   The form itself is a card. Labels sit above their inputs, except the
+   checkbox row, which is a flex line.
+--------------------------------------------------------------------- */
+form {
+  background-color: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  max-width: 440px;
+  margin-bottom: 1.5rem;
+}
+
+form p {
+  margin: 0 0 1.1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--ink);
+  background-color: var(--page);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: var(--pink);
+  box-shadow: 0 0 0 3px rgba(194, 24, 91, 0.15);
+}
+
+/* The checkbox row: label and box on one line, label not uppercase */
+form p:has(input[type="checkbox"]) {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+form p:has(input[type="checkbox"]) label {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink);
+}
+
+input[type="checkbox"] {
+  width: 1.05rem;
+  height: 1.05rem;
+  accent-color: var(--pink);
+}
+
+button[type="submit"] {
+  padding: 0.75rem 2.25rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background-color: var(--pink);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.18s ease, transform 0.18s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--pink-dark);
+  transform: translateY(-1px);
+}
+
+button[type="submit"]:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+
+/* ---------------------------------------------------------------------
+   11. FOOTER
+   Dark plum band, cream text, links in a centred flex row.
+--------------------------------------------------------------------- */
+footer {
+  background-color: var(--plum);
+  color: var(--cream);
+  text-align: center;
+  padding: 2.5rem clamp(1rem, 4vw, 3rem);
+}
+
+footer p {
+  max-width: none;
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+}
+
+footer ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+footer a {
+  color: var(--cream);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(239, 230, 216, 0.4);
+  padding-bottom: 2px;
+}
+
+footer a:hover,
+footer a:focus {
+  color: #F7B8CE;
+  border-bottom-color: #F7B8CE;
+}
+
+
+/* ---------------------------------------------------------------------
+   12. RESPONSIVE BREAKPOINTS
+--------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  header > p {
+    order: 0; /* stacked anyway, so keep the document order */
+  }
+
+  nav ul {
+    gap: 1.1rem;
+  }
+
+  section {
+    grid-template-columns: 1fr; /* cards stop sitting side by side */
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 1rem;
+  }
+
+  h2 {
+    font-size: 1.35rem;
+  }
+
+  article img {
+    height: 180px;
+  }
+}
+
+
+/* ---------------------------------------------------------------------
+   13. MOTION
+   Anyone who has asked their system for less movement gets none.
+--------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+
+  article:hover,
+  button[type="submit"]:hover {
+    transform: none;
+  }
+}

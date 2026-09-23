@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="JAPS">
+  <title>JAPS</title>
+
+  <!-- The sewn-in garment label, in the house pink -->
+  <rect x="2" y="2" width="116" height="116" rx="24" fill="#C2185B"/>
+
+  <!-- Stitching around the edge, the way a real label is sewn into a collar -->
+  <rect x="12" y="12" width="96" height="96" rx="16"
+        fill="none" stroke="#EFE6D8" stroke-width="2.5"
+        stroke-dasharray="5 8" stroke-linecap="round" opacity="0.85"/>
+
+  <!-- One initial per founder, four quadrants, equal size and equal weight -->
+  <g fill="#EFE6D8" font-family="Arial, Helvetica, sans-serif"
+     font-size="30" font-weight="700" text-anchor="middle">
+    <text x="42" y="52">J</text>
+    <text x="78" y="52">A</text>
+    <text x="42" y="90">P</text>
+    <text x="78" y="90">S</text>
+  </g>
+</svg>

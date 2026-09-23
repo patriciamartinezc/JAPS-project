@@ -1,0 +1,34 @@
+/*
+  JAPS - brand lockup only
+  Web Application Programming (G247) - CUNEF Escuela Politecnica Superior
+
+  Deliberately narrow: this file only puts the logo next to the page title.
+  It does not style the rest of the Session 3 markup.
+*/
+
+/* Sits the logo and the <h1> side by side, vertically centred */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brand-logo {
+  width: 96px;
+  height: 96px;
+  flex-shrink: 0; /* keeps the badge square when the title is long */
+}
+
+/* The <h1> keeps its own font size, it just loses the margin that
+   would otherwise push it away from the logo */
+.brand h1 {
+  margin: 0;
+}
+
+/* Narrow screens: shrink the badge so the title still fits beside it */
+@media (max-width: 480px) {
+  .brand-logo {
+    width: 64px;
+    height: 64px;
+  }
+}
