@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <!--
   Session 3 Lab - Structuring a Page (AF2)
-  Web Application Programming (G247) - CUNEF Escuela Politecnica Superior
+  Web Application Programming (G247) · CUNEF Escuela Politécnica Superior
   Pair: Jimena Gil - [PARTNER NAME HERE]
   Page: Stores - addresses, opening hours and contact details
 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Stores and contact - JAPS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Visit JAPS in Madrid, Barcelona and Porto. Opening hours, contact details, free repairs while you wait, and our thirty-day returns policy.">
+  <title>Stores and contact – JAPS</title>
   <link rel="icon" href="japs-logo.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +34,9 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="collections.html">Collections</a></li>
         <li><a href="lookbook.html">Lookbook</a></li>
-        <li><a href="stores.html">Stores</a></li>
+        <!-- aria-current="page" marks the link for the page we are already on,
+             so screen readers announce it and CSS can highlight it -->
+        <li><a href="stores.html" aria-current="page">Stores</a></li>
         <li><a href="login.html">Log in</a></li>
       </ul>
     </nav>
@@ -52,12 +55,12 @@
       </p>
 
       <article>
-        <h3>Madrid - Calle del Pez 14</h3>
+        <h3>Madrid – Calle del Pez 14</h3>
         <img src="https://placehold.co/520x340?text=Madrid+store"
              alt="Shop front of the JAPS Madrid store with large windows"
              width="520" height="340">
         <p>
-          Our first shop and our workshop, in Malasana. The pattern room is
+          Our first shop and our workshop, in Malasaña. The pattern room is
           behind the fitting rooms and you are welcome to look in.
         </p>
         <h4>Opening hours</h4>
@@ -69,9 +72,9 @@
       </article>
 
       <article>
-        <h3>Barcelona - Carrer de Verdi 8</h3>
+        <h3>Barcelona – Carrer de Verdi 8</h3>
         <p>
-          A smaller shop in Gracia, opened in 2024. It shares the building with a
+          A smaller shop in Gràcia, opened in 2024. It shares the building with a
           bookshop, so the entrance is the door on the left.
         </p>
         <h4>Opening hours</h4>
@@ -82,7 +85,7 @@
       </article>
 
       <article>
-        <h3>Porto - Rua de Cedofeita 220</h3>
+        <h3>Porto – Rua de Cedofeita 220</h3>
         <p>
           Ten minutes from the workshop that sews our clothes. Alterations here
           are usually done the same morning.
@@ -124,7 +127,7 @@
       <h2>Returns</h2>
       <p>
         Thirty days, worn or unworn, no questions. Returns are free in
-        <span>Spain</span> and <span>Portugal</span>, and cost 6 EUR everywhere
+        <span>Spain</span> and <span>Portugal</span>, and cost 6&nbsp;€ everywhere
         else in Europe.
       </p>
     </aside>

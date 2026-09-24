@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <!--
   Session 3 Lab - Structuring a Page (AF2)
-  Web Application Programming (G247) - CUNEF Escuela Politecnica Superior
+  Web Application Programming (G247) · CUNEF Escuela Politécnica Superior
   Pair: Jimena Gil - [PARTNER NAME HERE]
   Page: Lookbook - seasonal photographs
 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Lookbook - JAPS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The JAPS Autumn 2026 and Spring 2026 lookbooks, shot in Madrid and Cádiz — the clothes as people actually wear them, wrinkles included.">
+  <title>Lookbook – JAPS</title>
   <link rel="icon" href="japs-logo.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,7 +33,9 @@
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="collections.html">Collections</a></li>
-        <li><a href="lookbook.html">Lookbook</a></li>
+        <!-- aria-current="page" marks the link for the page we are already on,
+             so screen readers announce it and CSS can highlight it -->
+        <li><a href="lookbook.html" aria-current="page">Lookbook</a></li>
         <li><a href="stores.html">Stores</a></li>
         <li><a href="login.html">Log in</a></li>
       </ul>
@@ -53,7 +56,7 @@
       </p>
 
       <article>
-        <h3>Look 01 - Overshirt and work trouser</h3>
+        <h3>Look 01 – Overshirt and work trouser</h3>
         <img src="https://placehold.co/560x420?text=Look+01"
              alt="Model wearing a sand linen overshirt over a white t-shirt and canvas trousers"
              width="560" height="420">
@@ -64,7 +67,7 @@
       </article>
 
       <article>
-        <h3>Look 02 - Merino and wool</h3>
+        <h3>Look 02 – Merino and wool</h3>
         <img src="https://placehold.co/560x420?text=Look+02"
              alt="Model wearing a grey merino jumper tucked into pleated wool trousers"
              width="560" height="420">
@@ -79,7 +82,7 @@
       <h2>Spring 2026</h2>
 
       <p>
-        The previous season, shot in Cadiz. Some pieces are now sold out, but the
+        The previous season, shot in Cádiz. Some pieces are now sold out, but the
         shirts and trousers below are still in production and will be restocked
         in March.
       </p>

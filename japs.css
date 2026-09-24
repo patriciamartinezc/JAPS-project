@@ -1,6 +1,6 @@
 /*
   japs.css - visual design for the whole JAPS site
-  Web Application Programming (G247) - CUNEF Escuela Politecnica Superior
+  Web Application Programming (G247) · CUNEF Escuela Politécnica Superior
   Pair: Jimena Gil - [PARTNER NAME HERE]
 
   Loads after japs-logo.css, so anything repeated here wins.
@@ -129,7 +129,7 @@ em {
 .price {
   font-weight: 600;
   color: var(--pink);
-  white-space: nowrap; /* never break "89 EUR" across two lines */
+  white-space: nowrap; /* never break "89 €" across two lines */
 }
 
 

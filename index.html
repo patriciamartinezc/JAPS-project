@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <!--
   Session 3 Lab - Structuring a Page (AF2)
-  Web Application Programming (G247) - CUNEF Escuela Politecnica Superior
-  Pair: Jimena Gil - [PARTNER NAME HERE]
+  Web Application Programming (G247) · CUNEF Escuela Politécnica Superior
+  Group: Jimena Gil - Ariadna Calzado - Sofía Rodríguez - Patricia Martínez
   Page: Homepage of the JAPS clothing site
 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>JAPS - Everyday clothing made to last</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="JAPS — everyday clothing made to last. Designed in Madrid, sewn in Portugal.">
+  <title>JAPS – Everyday clothing made to last</title>
   <link rel="icon" href="japs-logo.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +31,9 @@
 
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
+        <!-- aria-current="page" marks the link for the page we are already on,
+             so screen readers announce it and CSS can highlight it -->
+        <li><a href="index.html" aria-current="page">Home</a></li>
         <li><a href="collections.html">Collections</a></li>
         <li><a href="lookbook.html">Lookbook</a></li>
         <li><a href="stores.html">Stores</a></li>
@@ -67,7 +70,7 @@
           layer under a coat in winter.
           <!-- The price is wrapped in a span so it can be picked out later
                without changing the meaning of the sentence -->
-          Priced at <span class="price">89 EUR</span>.
+          Priced at <span class="price">89&nbsp;€</span>.
         </p>
 
         <h4>Details</h4>
