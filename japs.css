@@ -255,6 +255,14 @@ section > img {
   display: block;
 }
 
+/* A collage is already a composed picture, so it is never cropped: the box
+   keeps the collage's own 5:3 shape and every tile stays visible. */
+section > img.collage {
+  height: auto;
+  aspect-ratio: 5 / 3;
+  object-fit: contain;
+}
+
 
 /* ---------------------------------------------------------------------
    7. CARDS
@@ -284,6 +292,15 @@ article img {
   display: block;
   margin-bottom: 0.9rem;
   background-color: var(--pink-tint);
+}
+
+/* Real product photography (square shots on a white background): the box
+   is a square and the garment is shown whole, never cropped. */
+article img.product-photo {
+  aspect-ratio: 1 / 1;
+  height: auto;
+  object-fit: contain;
+  background-color: #fff;
 }
 
 article p:last-child {
@@ -366,6 +383,7 @@ label {
   color: var(--ink-soft);
 }
 
+input[type="text"],
 input[type="email"],
 input[type="password"] {
   width: 100%;
@@ -379,6 +397,7 @@ input[type="password"] {
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
+input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus {
   outline: none;

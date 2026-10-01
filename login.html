@@ -2,14 +2,14 @@
 <!--
   Session 3 Lab - Structuring a Page (AF2)
   Web Application Programming (G247) · CUNEF Escuela Politécnica Superior
-  Pair: Jimena Gil - [PARTNER NAME HERE]
+  Group: Jimena Gil - Ariadna Calzado - Sofía Rodríguez - Patricia Martínez
   Page: Login - front-end only form, no action attribute (Block II will wire it up)
 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Sign in to your JAPS account to see your order history, repair tickets and restock alerts.">
+  <meta name="description" content="Sign in to your JAPS account, or create one, to see your order history, repair tickets and restock alerts.">
   <title>Log in – JAPS</title>
   <link rel="icon" href="japs-logo.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,10 +48,10 @@
       <h2>Sign in to your account</h2>
 
       <p>
-        Use the email address you ordered with. If you have never bought from us,
-        you do not need an account to shop -
-        <a href="collections.html">browse the collections</a> and check out as a
-        guest instead.
+        Use the email address you ordered with. No account yet?
+        <a href="#sign-up">Create one below</a> - or you do not need an account
+        to shop at all: <a href="collections.html">browse the collections</a> and
+        check out as a guest instead.
       </p>
 
       <!-- Front-end only: no action attribute, this form submits nowhere yet -->
@@ -84,6 +84,65 @@
         <a href="mailto:hello@japs.example">hello@japs.example</a> and we will
         send you a reset link. We <strong>never</strong> ask for your password by
         email.
+      </p>
+    </section>
+
+    <!-- Second form on the page: creating an account. Every id is different
+         from the sign-in form's so each label still points at one input -->
+    <section id="sign-up">
+      <h2>Create an account</h2>
+
+      <p>
+        If you have never signed in before, this takes a minute. We ask for a
+        name so our tailors know whose repair they are looking at, and for
+        nothing else.
+      </p>
+
+      <!-- Front-end only: no action attribute, this form submits nowhere yet -->
+      <form>
+        <p>
+          <label for="new-name">Full name</label>
+          <input type="text" id="new-name" name="new-name"
+                 placeholder="Jimena Gil" autocomplete="name" required>
+        </p>
+
+        <p>
+          <label for="new-email">Email address</label>
+          <input type="email" id="new-email" name="new-email"
+                 placeholder="you@example.com" autocomplete="email" required>
+        </p>
+
+        <p>
+          <label for="new-password">Choose a password</label>
+          <input type="password" id="new-password" name="new-password"
+                 minlength="8" autocomplete="new-password" required
+                 title="At least 8 characters">
+        </p>
+
+        <p>
+          <label for="confirm-password">Repeat your password</label>
+          <input type="password" id="confirm-password" name="confirm-password"
+                 minlength="8" autocomplete="new-password" required
+                 title="Type the same password again">
+        </p>
+
+        <p>
+          <label for="restock">Email me when a piece I want is back in stock</label>
+          <input type="checkbox" id="restock" name="restock">
+        </p>
+
+        <p>
+          <label for="terms">I have read how JAPS stores my data</label>
+          <input type="checkbox" id="terms" name="terms" required>
+        </p>
+
+        <p>
+          <button type="submit">Create account</button>
+        </p>
+      </form>
+
+      <p>
+        Already have one? <a href="#sign-in">Sign in at the top of this page</a>.
       </p>
     </section>
 
