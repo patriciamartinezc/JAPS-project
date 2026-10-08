@@ -13,9 +13,10 @@ A static, multi-page site for a fictional Madrid clothing brand, built with hand
 | File | Purpose |
 |---|---|
 | `index.html` | Homepage — new arrivals, autumn lookbook teaser, brand story |
-| `collections.html` | Full catalogue, grouped by garment type (shirts, knitwear, trousers) |
+| `collections.html` | Full catalogue — a category menu plus seven sections (shirts, knitwear, dresses and skirts, jackets and coats, trousers, bags, accessories) |
 | `lookbook.html` | Seasonal photo sets for Autumn 2026 and Spring 2026 |
 | `stores.html` | The three store locations, contact details and returns policy |
+| `cart.html` | The cart — the garments picked out elsewhere, with quantities and a total |
 | `login.html` | Account sign-in form and account benefits |
 | `starter_practice_page.html` | Shared Session 6 CSS practice page (DevNews). Not part of the JAPS site — the markup is fixed and must not be edited. |
 
@@ -29,6 +30,26 @@ A static, multi-page site for a fictional Madrid clothing brand, built with hand
 
 `japs-logo.svg` is the logo, used both in the header lockup and as the favicon.
 
+## Scripts
+
+| File | Purpose |
+|---|---|
+| `japs-cart.js` | The shopping cart. Loaded with `defer` on every page of the site. |
+
+The cart is plain hand-written JavaScript — no framework and no build step, like
+the rest of the project. It keeps the cart in `localStorage` under the key
+`japs-cart`, so it survives a reload and follows the visitor from page to page.
+A page joins in by adding:
+
+- a button with `class="add-to-cart"` and `data-name`, `data-price` and
+  (optionally) `data-image` — one sits under every garment that has a price;
+- an element with `data-cart-count` in the nav, which gets the number of items
+  written into it;
+- on `cart.html` only, the table with `id="cart-rows"` that the cart is drawn into.
+
+If `localStorage` is unavailable the cart still works for as long as the tab is
+open, it just stops being remembered.
+
 Fonts (Playfair Display and Jost) are loaded from Google Fonts, so the site needs a network connection to render exactly as designed.
 
 ## How to run
@@ -37,5 +58,6 @@ Open `index.html` in a browser, or — preferably — use VS Code's Live Server 
 
 ## Status
 
-- [x] Block I — HTML structure (all five site pages)
-- [x] Block II — CSS and layout (all five pages link `japs.css`)
+- [x] Block I — HTML structure (all six site pages)
+- [x] Block II — CSS and layout (all six pages link `japs.css`)
+- [x] Cart — `cart.html` plus `japs-cart.js`, the site's only JavaScript

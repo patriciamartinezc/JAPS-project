@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400&family=Jost:wght@300;400;500;600&display=swap">
   <link rel="stylesheet" href="japs-logo.css">
   <link rel="stylesheet" href="japs.css">
+  <!-- defer so the script runs once the page has been parsed -->
+  <script src="japs-cart.js" defer></script>
 </head>
 <body>
 
@@ -37,6 +39,9 @@
         <!-- aria-current="page" marks the link for the page we are already on,
              so screen readers announce it and CSS can highlight it -->
         <li><a href="stores.html" aria-current="page">Stores</a></li>
+        <!-- The badge is written by japs-cart.js and stays hidden while the
+             cart is empty -->
+        <li><a href="cart.html">Cart <span class="cart-count" data-cart-count hidden>0</span></a></li>
         <li><a href="login.html">Log in</a></li>
       </ul>
     </nav>
@@ -56,9 +61,9 @@
 
       <article>
         <h3>Madrid – Calle del Pez 14</h3>
-        <img src="https://placehold.co/520x340?text=Madrid+store"
-             alt="Shop front of the JAPS Madrid store with large windows"
-             width="520" height="340">
+        <img class="store-photo" src="images/madrid-store.png"
+             alt="Shop front of the JAPS Madrid store at dusk: a row of tall black-framed windows under a stone facade, each one lit and holding a dressed mannequin, with a pink JAPS sign beside the door"
+             width="1536" height="1024">
         <p>
           Our first shop and our workshop, in Malasaña. The pattern room is
           behind the fitting rooms and you are welcome to look in.
@@ -73,8 +78,11 @@
 
       <article>
         <h3>Barcelona – Carrer de Verdi 8</h3>
+        <img class="store-photo" src="images/barcelona-store.png"
+             alt="Shop front of the JAPS Barcelona store on a tree-lined corner: curved black-framed windows lit from inside, with dressed mannequins and clothing rails, and a pink JAPS sign above the corner"
+             width="1536" height="1024">
         <p>
-          A smaller shop in Gràcia, opened in 2024. It shares the building with a
+          A corner shop in Gràcia, opened in 2024. It shares the building with a
           bookshop, so the entrance is the door on the left.
         </p>
         <h4>Opening hours</h4>

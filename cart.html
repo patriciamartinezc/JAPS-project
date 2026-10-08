@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--
+  Session 3 Lab - Structuring a Page (AF2)
+  Web Application Programming (G247) · CUNEF Escuela Politécnica Superior
+  Group: Jimena Gil - Ariadna Calzado - Sofía Rodríguez - Patricia Martínez
+  Page: Cart - the garments picked out on the other pages, ready to buy
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Your JAPS cart: the garments you have picked out, with quantities and the total before checkout.">
+  <title>Your cart – JAPS</title>
+  <link rel="icon" href="japs-logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400&family=Jost:wght@300;400;500;600&display=swap">
+  <link rel="stylesheet" href="japs-logo.css">
+  <link rel="stylesheet" href="japs.css">
+  <!-- defer so the script runs once the table below has been parsed -->
+  <script src="japs-cart.js" defer></script>
+</head>
+<body>
+
+  <header>
+    <!-- Logo + page title as one lockup. Here the logo is the only thing
+         naming the brand, so it carries "JAPS" as its alt text -->
+    <div class="brand">
+      <img class="brand-logo" src="japs-logo.svg" alt="JAPS" width="96" height="96">
+      <h1>Your cart</h1>
+    </div>
+    <p>Everything you have picked out, in one place.</p>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collections.html">Collections</a></li>
+        <li><a href="lookbook.html">Lookbook</a></li>
+        <li><a href="stores.html">Stores</a></li>
+        <!-- aria-current="page" marks the link for the page we are already on,
+             so screen readers announce it and CSS can highlight it -->
+        <li><a href="cart.html" aria-current="page">Cart <span class="cart-count" data-cart-count hidden>0</span></a></li>
+        <li><a href="login.html">Log in</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="cart">
+      <h2>Garments in your cart</h2>
+
+      <!-- Shown only while the cart has nothing in it. The script flips the
+           hidden attribute on this and on the table below. -->
+      <p id="cart-empty">
+        Your cart is empty. Have a look through
+        <a href="collections.html">the collections</a> and use the
+        <strong>Add to cart</strong> button under any garment to put it here.
+      </p>
+
+      <!-- A cart is tabular data - one row per garment, one column per fact -
+           so it is marked up as a real table rather than a list of divs. -->
+      <table id="cart-table" hidden>
+        <caption>Your cart, with the price of each garment and the line total.</caption>
+        <thead>
+          <tr>
+            <th scope="col">Garment</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Line total</th>
+            <th scope="col"><span class="visually-hidden">Remove</span></th>
+          </tr>
+        </thead>
+        <!-- japs-cart.js draws the rows in here -->
+        <tbody id="cart-rows"></tbody>
+        <tfoot>
+          <tr>
+            <th scope="row" colspan="3">Total</th>
+            <td class="cart-price" id="cart-total">0&nbsp;€</td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <div id="cart-summary" hidden>
+        <p>
+          <span id="cart-item-count">0 garments</span> in your cart. Shipping is
+          free in Spain and Portugal, and repairs are free for life in any of our
+          <a href="stores.html">three stores</a>.
+        </p>
+
+        <p class="cart-actions">
+          <button type="button" class="checkout-button" data-cart-action="checkout">Go to checkout</button>
+          <button type="button" class="text-button" data-cart-action="empty">Empty the cart</button>
+          <a href="collections.html">Keep shopping</a>
+        </p>
+      </div>
+    </section>
+
+    <aside>
+      <h2>Before you buy</h2>
+      <p>
+        Our shirts run one size large on purpose, so if you are between two
+        sizes take the smaller one. Returns are free within thirty days, worn
+        or unworn, and you can read the
+        <a href="stores.html">full returns policy</a> on the stores page.
+      </p>
+      <p>
+        This is a coursework site, so <strong>nothing is really
+        charged</strong> and no payment details are ever asked for.
+      </p>
+    </aside>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 JAPS. All rights reserved.</p>
+    <ul>
+      <li><a href="index.html">Back to homepage</a></li>
+      <li><a href="stores.html#contact">Contact us</a></li>
+      <li><a href="https://www.instagram.com/">Follow JAPS on Instagram</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>

@@ -303,6 +303,14 @@ article img.product-photo {
   background-color: #fff;
 }
 
+/* A shop front needs its full width to read, so the box keeps the photo's
+   own shape instead of cropping it to the fixed card height. */
+article img.store-photo {
+  aspect-ratio: 3 / 2;
+  height: auto;
+  object-fit: cover;
+}
+
 article p:last-child {
   margin-bottom: 0;
 }
@@ -454,7 +462,328 @@ button[type="submit"]:focus-visible {
 
 
 /* ---------------------------------------------------------------------
-   11. FOOTER
+   10b. THE CATEGORY MENU
+   The second <nav> on the collections page: one pill per category, each
+   one an in-page link down to that section.
+--------------------------------------------------------------------- */
+.category-menu {
+  margin-bottom: 2.5rem;
+}
+
+.category-menu h2 {
+  font-size: 1.15rem;
+  margin-bottom: 0.75rem;
+}
+
+/* No pink rule here: this heading labels a menu, not a section of content */
+.category-menu h2::after {
+  display: none;
+}
+
+.category-menu ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.category-menu li {
+  margin: 0;
+}
+
+.category-menu a {
+  display: inline-block;
+  padding: 0.45rem 1.1rem;
+  color: var(--ink);
+  background-color: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+.category-menu a:hover,
+.category-menu a:focus {
+  color: var(--pink);
+  background-color: var(--pink-tint);
+  border-color: var(--pink);
+}
+
+
+/* ---------------------------------------------------------------------
+   11. THE CART
+   Three pieces: the "Add to cart" buttons that sit under every garment,
+   the counter badge in the nav, and the cart table on cart.html.
+--------------------------------------------------------------------- */
+
+/* The pink pill, shared by "Add to cart" and "Go to checkout". The login
+   form's submit button is styled separately in section 10. */
+.add-to-cart,
+.checkout-button {
+  padding: 0.6rem 1.5rem;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background-color: var(--pink);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.18s ease, transform 0.18s ease;
+}
+
+.add-to-cart:hover,
+.checkout-button:hover {
+  background-color: var(--pink-dark);
+  transform: translateY(-1px);
+}
+
+.add-to-cart:focus-visible,
+.checkout-button:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+/* The second and a half after a garment goes in: the button confirms it */
+.add-to-cart.is-added {
+  background-color: var(--ink);
+  transform: none;
+}
+
+/* The row a card's button sits on, next to any "see all" link */
+.buy-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* The trousers list: text, price, then the button on the same line. The
+   list items stay list items, so the ordered numbers are still drawn. */
+.buy-list li {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.buy-list li:last-child {
+  border-bottom: none;
+}
+
+.buy-list .add-to-cart {
+  margin-left: 0.75rem;
+  vertical-align: middle;
+}
+
+/* The counter in the nav, written by japs-cart.js */
+.cart-count {
+  display: inline-block;
+  min-width: 1.5em;
+  padding: 0 0.35em;
+  background-color: var(--pink);
+  color: var(--cream);
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+/* An author rule beats the browser's own [hidden] rule, so every element
+   this stylesheet gives a display to has to opt back out of being shown. */
+.cart-count[hidden],
+#cart-table[hidden] {
+  display: none;
+}
+
+/* The cart table itself */
+#cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+#cart-table caption {
+  caption-side: top;
+  text-align: left;
+  margin-bottom: 0.75rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+#cart-table th,
+#cart-table td {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--line);
+}
+
+#cart-table thead th {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+#cart-table tfoot th,
+#cart-table tfoot td {
+  border-bottom: none;
+  font-size: 1.05rem;
+}
+
+#cart-table tfoot th {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+}
+
+/* Garment cell: thumbnail and name on one line. The flex box is an inner
+   wrapper, so the cell itself stays a table cell and the columns line up. */
+.cart-garment-line {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.cart-garment img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 6px;
+  background-color: var(--pink-tint);
+  flex-shrink: 0;
+}
+
+.cart-name {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.cart-price {
+  white-space: nowrap;
+  font-weight: 600;
+  color: var(--pink);
+}
+
+/* The minus / number / plus control */
+.cart-quantity {
+  white-space: nowrap;
+}
+
+.quantity-button {
+  width: 2rem;
+  height: 2rem;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--ink);
+  background-color: var(--page);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.quantity-button:hover {
+  border-color: var(--pink);
+  color: var(--pink);
+}
+
+.quantity-value {
+  display: inline-block;
+  min-width: 2ch;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* "Remove" and "Empty the cart" read as links, not as pink pills */
+.remove-button,
+.text-button {
+  padding: 0;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.remove-button:hover,
+.text-button:hover {
+  color: var(--pink);
+  border-bottom-color: var(--pink);
+}
+
+#cart-summary {
+  margin-top: 1.5rem;
+}
+
+.cart-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* The message that confirms an addition. It is a live region, so screen
+   readers announce it; everyone else sees it slide up from the corner. */
+.cart-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 1.5rem;
+  z-index: 10;
+  max-width: min(90vw, 30rem);
+  margin: 0;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--ink);
+  color: var(--cream);
+  border-radius: 999px;
+  box-shadow: var(--shadow-lift);
+  font-size: 0.9rem;
+  text-align: center;
+  opacity: 0;
+  transform: translate(-50%, 1rem);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.cart-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* Visible to screen readers only - used for the empty "Remove" column head */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+
+/* ---------------------------------------------------------------------
+   12. FOOTER
    Dark plum band, cream text, links in a centred flex row.
 --------------------------------------------------------------------- */
 footer {
@@ -499,7 +828,7 @@ footer a:focus {
 
 
 /* ---------------------------------------------------------------------
-   12. RESPONSIVE BREAKPOINTS
+   13. RESPONSIVE BREAKPOINTS
 --------------------------------------------------------------------- */
 @media (max-width: 768px) {
   header {
@@ -521,6 +850,66 @@ footer a:focus {
   }
 }
 
+/* Five columns will not fit on a phone, so each row of the cart becomes a
+   small stacked card and the column headings are replaced by labels. */
+@media (max-width: 640px) {
+  #cart-table,
+  #cart-table tbody,
+  #cart-table tfoot,
+  #cart-table tr,
+  #cart-table td {
+    display: block;
+  }
+
+  #cart-table thead {
+    display: none;
+  }
+
+  /* A table-caption inside a block box shrinks to fit, which breaks the
+     sentence over one word per line, so it becomes a block too */
+  #cart-table caption {
+    display: block;
+  }
+
+  #cart-table tr {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  #cart-table td {
+    border-bottom: none;
+    padding: 0.3rem 1rem;
+  }
+
+  /* The heading each stacked cell lost with the table head */
+  .cart-unit::before {
+    content: "Price: ";
+  }
+
+  .cart-line::before {
+    content: "Line total: ";
+  }
+
+  .cart-unit::before,
+  .cart-line::before {
+    color: var(--ink-soft);
+    font-weight: 400;
+  }
+
+  #cart-table tfoot tr {
+    border-bottom: none;
+  }
+
+  #cart-table tfoot th {
+    display: block;
+    padding: 0.3rem 1rem;
+  }
+
+  .cart-actions {
+    gap: 1rem;
+  }
+}
+
 @media (max-width: 480px) {
   body {
     font-size: 1rem;
@@ -533,11 +922,17 @@ footer a:focus {
   article img {
     height: 180px;
   }
+
+  /* The button drops onto its own line under the garment name */
+  .buy-list .add-to-cart {
+    display: block;
+    margin: 0.6rem 0 0;
+  }
 }
 
 
 /* ---------------------------------------------------------------------
-   13. MOTION
+   14. MOTION
    Anyone who has asked their system for less movement gets none.
 --------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
@@ -552,7 +947,14 @@ footer a:focus {
   }
 
   article:hover,
-  button[type="submit"]:hover {
+  button[type="submit"]:hover,
+  .add-to-cart:hover,
+  .checkout-button:hover {
     transform: none;
+  }
+
+  /* The toast still appears and is still announced, it just does not slide */
+  .cart-toast {
+    transform: translate(-50%, 0);
   }
 }

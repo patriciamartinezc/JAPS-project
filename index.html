@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--
   Session 3 Lab - Structuring a Page (AF2)
@@ -17,6 +18,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400&family=Jost:wght@300;400;500;600&display=swap">
   <link rel="stylesheet" href="japs-logo.css">
   <link rel="stylesheet" href="japs.css">
+  <!-- defer so the script runs once the page has been parsed -->
+  <script src="japs-cart.js" defer></script>
 </head>
 <body>
 
@@ -37,6 +40,9 @@
         <li><a href="collections.html">Collections</a></li>
         <li><a href="lookbook.html">Lookbook</a></li>
         <li><a href="stores.html">Stores</a></li>
+        <!-- The badge is written by japs-cart.js and stays hidden while the
+             cart is empty -->
+        <li><a href="cart.html">Cart <span class="cart-count" data-cart-count hidden>0</span></a></li>
         <li><a href="login.html">Log in</a></li>
       </ul>
     </nav>
@@ -81,7 +87,16 @@
           <li>Colours: sand, off-white, deep navy</li>
         </ul>
 
-        <p><a href="collections.html#shirts">See all shirts and overshirts</a></p>
+        <!-- The data- attributes are what japs-cart.js reads when the button
+             is pressed: the name identifies the garment, the price is a plain
+             number so it can be added up, and the image is shown in the cart -->
+        <p class="buy-row">
+          <button type="button" class="add-to-cart"
+                  data-name="The Linen Overshirt"
+                  data-price="89"
+                  data-image="images/linen-overshirt.png">Add to cart</button>
+          <a href="collections.html#shirts">See all shirts and overshirts</a>
+        </p>
       </article>
     </section>
 
