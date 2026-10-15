@@ -246,6 +246,30 @@ section > :not(article) {
   grid-column: 1 / -1;
 }
 
+/* Rows that come out even. Left to auto-fit, four cards land as three plus
+   one on its own and five as three plus two with a gap. Four cards become
+   two rows of two; five become a row of three and a row of two wider ones.
+   (Counting with :nth-of-type works because only the cards are articles.) */
+@media (min-width: 769px) {
+  section:has(> article:nth-of-type(4):nth-last-of-type(1)) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1040px) {
+  section:has(> article:nth-of-type(5):nth-last-of-type(1)) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  section:has(> article:nth-of-type(5):nth-last-of-type(1)) > article {
+    grid-column: span 2;
+  }
+
+  section:has(> article:nth-of-type(5):nth-last-of-type(1)) > article:nth-of-type(n + 4) {
+    grid-column: span 3;
+  }
+}
+
 /* Banner images that sit directly in a section, not inside a card */
 section > img {
   width: 100%;
@@ -301,6 +325,15 @@ article img.product-photo {
   height: auto;
   object-fit: contain;
   background-color: #fff;
+}
+
+/* Full-length studio shots are tall and sit on a grey or cream backdrop,
+   not white. The box turns portrait to match them, and whatever space is
+   left at the sides is filled with the photo's own backdrop colour (set
+   per image as --photo-bg in the HTML), so no panel shows. */
+article img.product-photo.portrait {
+  aspect-ratio: 3 / 4;
+  background-color: var(--photo-bg, #fff);
 }
 
 /* A shop front needs its full width to read, so the box keeps the photo's

@@ -1,0 +1,21 @@
+{
+  "name": "japs-project",
+  "version": "1.0.0",
+  "description": "Coursework site for Web Application Programming (G247), CUNEF Escuela Politécnica Superior.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patriciamartinezc/JAPS-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/patriciamartinezc/JAPS-project/issues"
+  },
+  "homepage": "https://github.com/patriciamartinezc/JAPS-project#readme"
+}
