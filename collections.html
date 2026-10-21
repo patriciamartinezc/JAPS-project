@@ -9,7 +9,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="The full JAPS catalogue: shirts, knitwear, dresses, jackets, trousers, bags and accessories. Small batches, no discounts, free repairs for life.">
+  <meta name="description" content="The full JAPS catalogue: shirts, dresses, jackets, trousers, shoes and bags. Small batches, no discounts, free repairs for life.">
   <title>Collections – JAPS</title>
   <link rel="icon" href="japs-logo.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,17 +56,16 @@
       <h2 id="category-menu-heading">Browse by category</h2>
       <ul>
         <li><a href="#shirts">Shirts</a></li>
-        <li><a href="#knitwear">Knitwear</a></li>
         <li><a href="#dresses">Dresses and skirts</a></li>
         <li><a href="#jackets">Jackets and coats</a></li>
         <li><a href="#trousers">Trousers</a></li>
+        <li><a href="#shoes">Shoes</a></li>
         <li><a href="#bags">Bags</a></li>
-        <li><a href="#accessories">Accessories</a></li>
       </ul>
     </nav>
 
     <section id="shirts">
-      <h2>Shirts and overshirts</h2>
+      <h2>Shirts</h2>
 
       <p>
         Our shirts are cut wide through the body and short in the hem so they sit
@@ -74,26 +73,6 @@
         trace. The <a href="lookbook.html#autumn">autumn photographs</a> show how
         they layer together.
       </p>
-
-      <article>
-        <h3>The Linen Overshirt</h3>
-        <img class="product-photo" src="images/linen-overshirt.png"
-             alt="Model wearing a grey linen overshirt with two chest pockets and rolled sleeves"
-             width="700" height="700">
-        <p>
-          Washed European linen, corozo buttons, boxy fit.
-          <span class="price">89&nbsp;€</span>. Available in sand, off-white and deep navy.
-        </p>
-        <!-- The data- attributes are what japs-cart.js reads when the button
-             is pressed: the name identifies the garment, the price is a plain
-             number so it can be added up, and the image is shown in the cart -->
-        <p class="buy-row">
-          <button type="button" class="add-to-cart"
-                  data-name="The Linen Overshirt"
-                  data-price="89"
-                  data-image="images/linen-overshirt.png">Add to cart</button>
-        </p>
-      </article>
 
       <article>
         <h3>The Silk Camisole</h3>
@@ -106,6 +85,9 @@
           <span class="price">120&nbsp;€</span>. The <strong>best piece we
           make</strong>, and the one that takes us longest to finish.
         </p>
+        <!-- The data- attributes are what japs-cart.js reads when the button
+             is pressed: the name identifies the garment, the price is a plain
+             number so it can be added up, and the image is shown in the cart -->
         <p class="buy-row">
           <button type="button" class="add-to-cart"
                   data-name="The Silk Camisole"
@@ -132,57 +114,6 @@
                   data-image="images/sequin-shirt.jpg">Add to cart</button>
         </p>
       </article>
-
-      <!-- Pieces we have not photographed yet: a list rather than a card,
-           but each one still gets its own button -->
-      <h3>Also in this section</h3>
-      <ul class="buy-list">
-        <li>
-          The Oxford Shirt in white or pale blue – <span class="price">75&nbsp;€</span>
-          <button type="button" class="add-to-cart"
-                  data-name="The Oxford Shirt"
-                  data-price="75">Add to cart</button>
-        </li>
-        <li>
-          The Striped Cotton Shirt, cut like the Oxford – <span class="price">70&nbsp;€</span>
-          <button type="button" class="add-to-cart"
-                  data-name="The Striped Cotton Shirt"
-                  data-price="70">Add to cart</button>
-        </li>
-      </ul>
-    </section>
-
-    <section id="knitwear">
-      <h2>Knitwear</h2>
-
-      <p>
-        Two jumpers, both spun from Spanish merino wool in Catalonia. We keep the
-        range small so we can reorder the same yarn year after year instead of
-        chasing whatever is cheapest.
-      </p>
-
-      <ul class="buy-list">
-        <li>
-          The Merino Crewneck in oatmeal, navy or black – <span class="price">135&nbsp;€</span>
-          <button type="button" class="add-to-cart"
-                  data-name="The Merino Crewneck"
-                  data-price="135">Add to cart</button>
-        </li>
-        <li>
-          The Lambswool Cardigan, with horn buttons – <span class="price">150&nbsp;€</span>
-          <button type="button" class="add-to-cart"
-                  data-name="The Lambswool Cardigan"
-                  data-price="150">Add to cart</button>
-        </li>
-      </ul>
-
-      <h3>Care instructions</h3>
-      <ul>
-        <li>Wash cold, inside out, on a wool cycle</li>
-        <li>Dry flat, never on a radiator</li>
-        <li>De-pill with a comb after the first month</li>
-        <li>Free repairs for life in any JAPS store</li>
-      </ul>
     </section>
 
     <section id="dresses">
@@ -282,22 +213,6 @@
                   data-image="images/suede-skirt.jpg">Add to cart</button>
         </p>
       </article>
-
-      <h3>Also in this section</h3>
-      <ul class="buy-list">
-        <li>
-          The Silk Wrap Dress in rust, with lace trim – <span class="price">185&nbsp;€</span>
-          <button type="button" class="add-to-cart"
-                  data-name="The Silk Wrap Dress"
-                  data-price="185">Add to cart</button>
-        </li>
-        <li>
-          The Beaded Fringe Skirt, knee length – <span class="price">140&nbsp;€</span>
-          <button type="button" class="add-to-cart"
-                  data-name="The Beaded Fringe Skirt"
-                  data-price="140">Add to cart</button>
-        </li>
-      </ul>
     </section>
 
     <section id="jackets">
@@ -346,21 +261,61 @@
         </p>
       </article>
 
-      <h3>Also in this section</h3>
-      <ul class="buy-list">
-        <li>
-          The Wool Overcoat in charcoal, unlined – <span class="price">350&nbsp;€</span>
+      <article>
+        <h3>The Check Trench Jacket</h3>
+        <img class="product-photo portrait" style="--photo-bg: #C3BEC2" src="images/check-trench-jacket.jpg"
+             alt="Model in dark sunglasses wearing a short belted jacket in brown, black and rust check, with a high funnel collar, full raglan sleeves cut to the elbow and a tie belt at the waist"
+             width="296" height="446">
+        <p>
+          Waxed cotton in a brown, black and rust check, with a funnel collar
+          that buttons up to the chin, full raglan sleeves cut to the elbow and
+          a tie belt. <span class="price">245&nbsp;€</span>. Shower-proof, so it
+          does the work of a trench in half the length.
+        </p>
+        <p class="buy-row">
           <button type="button" class="add-to-cart"
-                  data-name="The Wool Overcoat"
-                  data-price="350">Add to cart</button>
-        </li>
-        <li>
-          The Linen Waistcoat in gold – <span class="price">95&nbsp;€</span>
+                  data-name="The Check Trench Jacket"
+                  data-price="245"
+                  data-image="images/check-trench-jacket.jpg">Add to cart</button>
+        </p>
+      </article>
+
+      <article>
+        <h3>The Cropped Navy Jacket</h3>
+        <img class="product-photo portrait" style="--photo-bg: #E9E9E9" src="images/cropped-navy-jacket.jpg"
+             alt="Model wearing a cropped navy double-breasted jacket with gold buttons and flap pockets over a navy roll-neck, with dark flared jeans, a gold chain belt and black suede boots"
+             width="305" height="575">
+        <p>
+          Navy wool bouclé, cut short at the hip, with a double row of gold
+          buttons and flap pockets. <span class="price">240&nbsp;€</span>.
+          Shown with dark flared jeans and a gold chain worn as a belt.
+        </p>
+        <p class="buy-row">
           <button type="button" class="add-to-cart"
-                  data-name="The Linen Waistcoat"
-                  data-price="95">Add to cart</button>
-        </li>
-      </ul>
+                  data-name="The Cropped Navy Jacket"
+                  data-price="240"
+                  data-image="images/cropped-navy-jacket.jpg">Add to cart</button>
+        </p>
+      </article>
+
+      <article>
+        <h3>The Puff-Sleeve Jacket</h3>
+        <img class="product-photo portrait" style="--photo-bg: #8A7A5E" src="images/puff-sleeve-jacket.jpg"
+             alt="Model in a cream cowboy hat wearing a fitted grey wool jacket with gathered puff shoulders and a single row of buttons, over a grey roll-neck, a wide brown leather belt and a brown and cream check skirt"
+             width="327" height="416">
+        <p>
+          Grey wool flannel, fitted through the waist, with gathered puff
+          shoulders and a single row of horn buttons.
+          <span class="price">260&nbsp;€</span>. Shown with a check skirt and
+          a wide leather belt worn over the jacket.
+        </p>
+        <p class="buy-row">
+          <button type="button" class="add-to-cart"
+                  data-name="The Puff-Sleeve Jacket"
+                  data-price="260"
+                  data-image="images/puff-sleeve-jacket.jpg">Add to cart</button>
+        </p>
+      </article>
     </section>
 
     <section id="trousers">
@@ -443,88 +398,97 @@
         </p>
       </article>
 
-      <h3>Also in this section</h3>
-      <ul class="buy-list">
-        <li>
-          The Work Trouser in 12 oz cotton canvas – <span class="price">95&nbsp;€</span>
+      <article>
+        <h3>The Draped Trouser</h3>
+        <img class="product-photo portrait" style="--photo-bg: #D9CFCF" src="images/draped-trouser.jpg"
+             alt="Model wearing wide black palazzo trousers with a long asymmetric draped panel falling from the waist to the floor, and a white high-collared blouse with sheer sleeves"
+             width="386" height="522">
+        <p>
+          Black crêpe palazzo trousers with a long draped panel that falls from
+          one hip to the floor, so the leg reads as a skirt when you walk.
+          <span class="price">165&nbsp;€</span>. Our evening trouser, worn here
+          with a white organza blouse.
+        </p>
+        <p class="buy-row">
           <button type="button" class="add-to-cart"
-                  data-name="The Work Trouser"
-                  data-price="95">Add to cart</button>
-        </li>
-        <li>
-          The Summer Trouser in linen and cotton – <span class="price">85&nbsp;€</span>
+                  data-name="The Draped Trouser"
+                  data-price="165"
+                  data-image="images/draped-trouser.jpg">Add to cart</button>
+        </p>
+      </article>
+    </section>
+
+    <section id="shoes">
+      <h2>Shoes</h2>
+
+      <p>
+        One shoe, in two colours. A soft suede ballet flat with a pink leather
+        lining and a thin rubber sole, made to be worn every day and resoled
+        rather than replaced.
+      </p>
+
+      <article>
+        <h3>The Suede Ballet Flat in Paprika</h3>
+        <img class="product-photo portrait" style="--photo-bg: #E9E0E1" src="images/ballet-flat-paprika.jpg"
+             alt="Pair of paprika-red suede ballet flats with a thin tied bow at the toe and a pink leather lining, one shown from above and one from the side"
+             width="385" height="398">
+        <p>
+          Paprika-red suede with a fine leather bow and a drawstring around the
+          topline, so the fit can be tightened.
+          <span class="price">125&nbsp;€</span>.
+        </p>
+        <p class="buy-row">
           <button type="button" class="add-to-cart"
-                  data-name="The Summer Trouser"
-                  data-price="85">Add to cart</button>
-        </li>
-        <li>
-          The Wide Trouser in cream wool – <span class="price">125&nbsp;€</span>
+                  data-name="The Suede Ballet Flat in Paprika"
+                  data-price="125"
+                  data-image="images/ballet-flat-paprika.jpg">Add to cart</button>
+        </p>
+      </article>
+
+      <article>
+        <h3>The Suede Ballet Flat in Olive</h3>
+        <img class="product-photo portrait" style="--photo-bg: #E9E0E1" src="images/ballet-flat-olive.jpg"
+             alt="Pair of olive-green suede ballet flats with a thin tied bow at the toe and a pink leather lining, one shown from above and one from the side"
+             width="301" height="360">
+        <p>
+          The same flat in olive-green suede, with a matching bow and a pink
+          leather lining. <span class="price">125&nbsp;€</span>.
+        </p>
+        <p class="buy-row">
           <button type="button" class="add-to-cart"
-                  data-name="The Wide Trouser"
-                  data-price="125">Add to cart</button>
-        </li>
-      </ul>
+                  data-name="The Suede Ballet Flat in Olive"
+                  data-price="125"
+                  data-image="images/ballet-flat-olive.jpg">Add to cart</button>
+        </p>
+      </article>
     </section>
 
     <section id="bags">
       <h2>Bags</h2>
 
       <p>
-        Three bags, no more. Each one is lined with the offcuts from our shirting,
+        One bag, no more. It is lined with the offcuts from our shirting,
         so the lining changes colour from batch to batch and we cannot promise
         which one you will get.
       </p>
 
-      <ul class="buy-list">
-        <li>
-          The Leather Shoulder Bag in brown – <span class="price">195&nbsp;€</span>
+      <article>
+        <h3>The Leather Shoulder Bag</h3>
+        <img class="product-photo portrait" style="--photo-bg: #F0F0F0" src="images/leather-handbag.jpg"
+             alt="Chocolate-brown leather handbag with white contrast stitching, a V-shaped seam down the front and a single rounded handle knotted to each side"
+             width="437" height="503">
+        <p>
+          Chocolate calf leather with white saddle stitching, a V seam down the
+          front and a single handle knotted at each side, so it can be
+          lengthened to wear on the shoulder. <span class="price">195&nbsp;€</span>.
+        </p>
+        <p class="buy-row">
           <button type="button" class="add-to-cart"
                   data-name="The Leather Shoulder Bag"
-                  data-price="195">Add to cart</button>
-        </li>
-        <li>
-          The Beaded Clutch, oval, on a gold chain – <span class="price">120&nbsp;€</span>
-          <button type="button" class="add-to-cart"
-                  data-name="The Beaded Clutch"
-                  data-price="120">Add to cart</button>
-        </li>
-        <li>
-          The Canvas Tote in ecru – <span class="price">65&nbsp;€</span>
-          <button type="button" class="add-to-cart"
-                  data-name="The Canvas Tote"
-                  data-price="65">Add to cart</button>
-        </li>
-      </ul>
-    </section>
-
-    <section id="accessories">
-      <h2>Accessories</h2>
-
-      <p>
-        The small things, made from whatever the bags and the tailoring leave
-        behind. They are the only pieces we restock all year round.
-      </p>
-
-      <ul class="buy-list">
-        <li>
-          The Leather Belt in brown or black – <span class="price">55&nbsp;€</span>
-          <button type="button" class="add-to-cart"
-                  data-name="The Leather Belt"
-                  data-price="55">Add to cart</button>
-        </li>
-        <li>
-          The Silk Scarf, hand rolled – <span class="price">45&nbsp;€</span>
-          <button type="button" class="add-to-cart"
-                  data-name="The Silk Scarf"
-                  data-price="45">Add to cart</button>
-        </li>
-        <li>
-          The Gold Chain Necklace – <span class="price">60&nbsp;€</span>
-          <button type="button" class="add-to-cart"
-                  data-name="The Gold Chain Necklace"
-                  data-price="60">Add to cart</button>
-        </li>
-      </ul>
+                  data-price="195"
+                  data-image="images/leather-handbag.jpg">Add to cart</button>
+        </p>
+      </article>
     </section>
 
     <aside>

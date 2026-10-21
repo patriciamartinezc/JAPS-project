@@ -13,7 +13,7 @@ A static, multi-page site for a fictional Madrid clothing brand, built with hand
 | File | Purpose |
 |---|---|
 | `index.html` | Homepage — new arrivals, autumn lookbook teaser, brand story |
-| `collections.html` | Full catalogue — a category menu plus seven sections (shirts, knitwear, dresses and skirts, jackets and coats, trousers, bags, accessories) |
+| `collections.html` | Full catalogue — a category menu plus six sections (shirts, dresses and skirts, jackets and coats, trousers, shoes, bags) |
 | `lookbook.html` | Seasonal photo sets for Autumn 2026 and Spring 2026 |
 | `stores.html` | The three store locations, contact details and returns policy |
 | `cart.html` | The cart — the garments picked out elsewhere, with quantities and a total |
