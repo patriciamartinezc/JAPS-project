@@ -64,13 +64,13 @@
         <p>
           <label for="email">Email address</label>
           <input type="email" id="email" name="email"
-                 placeholder="you@example.com" required>
+                 placeholder="you@example.com" autocomplete="email" required>
         </p>
 
         <p>
           <label for="password">Password</label>
           <input type="password" id="password" name="password"
-                 minlength="8" required
+                 minlength="8" required autocomplete="current-password"
                  title="At least 8 characters">
         </p>
 
@@ -175,7 +175,7 @@
     </section>
 
     <aside>
-      <h2>Trouble signing in?</h2>
+      <h3>Trouble signing in?</h3>
       <p>
         Accounts created before 2024 were migrated and may need a password reset.
         Our <a href="stores.html#contact">contact details</a> are on the stores

@@ -65,13 +65,20 @@
      THE FOUR THINGS A VISITOR CAN DO
   ------------------------------------------------------------------- */
 
+  var MAX_QUANTITY = 10;
+
   function addItem(name, price, image) {
     var items = readCart();
     var index = findIndex(items, name);
 
     if (index === -1) {
-      items.push({ name: name, price: price, image: image || '', quantity: 1 });
+      /* Store price in cents (integer) to avoid floating-point rounding errors */
+      items.push({ name: name, price: Math.round(price * 100), image: image || '', quantity: 1 });
     } else {
+      if (items[index].quantity >= MAX_QUANTITY) {
+        announce('You can add at most ' + MAX_QUANTITY + ' of the same item.');
+        return;
+      }
       items[index].quantity += 1;
     }
 
@@ -82,6 +89,12 @@
     var items = readCart();
     var index = findIndex(items, name);
     if (index === -1) {
+      return;
+    }
+
+    /* Enforce the maximum when stepping up */
+    if (step > 0 && items[index].quantity >= MAX_QUANTITY) {
+      announce('You can add at most ' + MAX_QUANTITY + ' of the same item.');
       return;
     }
 
@@ -123,20 +136,22 @@
   function cartTotal(items) {
     var total = 0;
     for (var i = 0; i < items.length; i++) {
+      /* price is stored in cents; sum in cents to avoid floating-point drift */
       total += items[i].price * items[i].quantity;
     }
-    return total;
+    return total; /* returns cents */
   }
 
   /* Prices are written the way the rest of the site writes them: no decimals
-     when the amount is whole, a non-breaking space before the euro sign. */
-  function formatPrice(amount) {
-    var rounded = Math.round(amount * 100) / 100;
-    var text = rounded.toLocaleString('es-ES', {
-      minimumFractionDigits: rounded % 1 === 0 ? 0 : 2,
+     when the amount is whole, a non-breaking space before the euro sign.
+     amount is in cents (integer). */
+  function formatPrice(amountInCents) {
+    var euros = amountInCents / 100;
+    var text = euros.toLocaleString('es-ES', {
+      minimumFractionDigits: euros % 1 === 0 ? 0 : 2,
       maximumFractionDigits: 2
     });
-    return text + ' €';
+    return text + '\u00a0€';
   }
 
   /* -------------------------------------------------------------------
