@@ -24,8 +24,7 @@ A static, multi-page site for a fictional Madrid clothing brand, built with hand
 
 | File | Purpose |
 |---|---|
-| `japs.css` | Main stylesheet for the whole site. Defines the brand tokens (house pink `#C2185B`, cream `#EFE6D8`) and all layout. |
-| `japs-logo.css` | Brand lockup only — places the logo next to the page title. Loaded *before* `japs.css`. |
+| `styles.css` | The one stylesheet for the whole site, linked from every page. Defines the brand tokens (house pink `#C2185B`, cream `#EFE6D8`) and all layout. |
 | `practice-styles.css` | Styles for `starter_practice_page.html` only. |
 
 `japs-logo.svg` is the logo, used both in the header lockup and as the favicon.
@@ -59,5 +58,5 @@ Open `index.html` in a browser, or — preferably — use VS Code's Live Server 
 ## Status
 
 - [x] Block I — HTML structure (all six site pages)
-- [x] Block II — CSS and layout (all six pages link `japs.css`)
+- [x] Block II — CSS and layout (all six pages link `styles.css`)
 - [x] Cart — `cart.html` plus `japs-cart.js`, the site's only JavaScript

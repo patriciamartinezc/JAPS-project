@@ -1,9 +1,9 @@
 /*
-  japs.css - visual design for the whole JAPS site
+  styles.css - visual design for the whole JAPS site
   Web Application Programming (G247) · CUNEF Escuela Politécnica Superior
   Group: Jimena Gil - Ariadna Calzado - Sofía Rodríguez - Patricia Martínez
 
-  Loads after japs-logo.css, so anything repeated here wins.
+  The one stylesheet every page links, so header, nav and footer match.
   Colours are taken from the logo: house pink #C2185B and cream #EFE6D8.
 */
 
@@ -172,10 +172,21 @@ header {
   border-bottom: 1px solid var(--line);
 }
 
-/* japs-logo.css sets 96px; 64px sits better next to the title */
+/* Brand lockup: logo and <h1> side by side, vertically centred */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .brand-logo {
   width: 64px;
   height: 64px;
+  flex-shrink: 0; /* keeps the badge square when the title is long */
+}
+
+.brand h1 {
+  margin: 0;
 }
 
 header > p {
@@ -330,11 +341,29 @@ article img.product-photo {
 /* Full-length studio shots are tall and sit on a grey or cream backdrop,
    not white. The box turns portrait to match them, and whatever space is
    left at the sides is filled with the photo's own backdrop colour (set
-   per image as --photo-bg in the HTML), so no panel shows. */
+   per image as --photo-bg below, matched on the file name), so no panel
+   shows. */
 article img.product-photo.portrait {
   aspect-ratio: 3 / 4;
   background-color: var(--photo-bg, #fff);
 }
+
+img[src$="/slip-dress.jpg"]          { --photo-bg: #D1D5DA; }
+img[src$="/smock-dress.jpg"]         { --photo-bg: #F0ECE7; }
+img[src$="/scallop-knit-dress.jpg"]  { --photo-bg: #F1EEE7; }
+img[src$="/ikat-skirt.jpg"]          { --photo-bg: #F0EAE3; }
+img[src$="/suede-skirt.jpg"]         { --photo-bg: #EDE7E0; }
+img[src$="/check-trench-jacket.jpg"] { --photo-bg: #C3BEC2; }
+img[src$="/cropped-navy-jacket.jpg"] { --photo-bg: #E9E9E9; }
+img[src$="/puff-sleeve-jacket.jpg"]  { --photo-bg: #8A7A5E; }
+img[src$="/pleated-trouser.jpg"]     { --photo-bg: #E9E9E9; }
+img[src$="/check-trouser.jpg"]       { --photo-bg: #EBE7E4; }
+img[src$="/stripe-trouser.jpg"]      { --photo-bg: #F0EDE9; }
+img[src$="/pinstripe-trouser.jpg"]   { --photo-bg: #ECE9E7; }
+img[src$="/draped-trouser.jpg"]      { --photo-bg: #D9CFCF; }
+img[src$="/ballet-flat-paprika.jpg"] { --photo-bg: #E9E0E1; }
+img[src$="/ballet-flat-olive.jpg"]   { --photo-bg: #E9E0E1; }
+img[src$="/leather-handbag.jpg"]     { --photo-bg: #F0F0F0; }
 
 /* A shop front needs its full width to read, so the box keeps the photo's
    own shape instead of cropping it to the fixed card height. */
@@ -406,8 +435,8 @@ form {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: 1.5rem;
-  max-width: 440px;
-  margin-bottom: 1.5rem;
+  max-width: 420px;
+  margin: 0 auto 1.5rem; /* centred sign-in card */
 }
 
 form p {
@@ -469,6 +498,7 @@ input[type="checkbox"] {
 }
 
 button[type="submit"] {
+  width: 100%;
   padding: 0.75rem 2.25rem;
   font-family: inherit;
   font-size: 0.85rem;
@@ -973,10 +1003,22 @@ footer a:focus {
     scroll-behavior: auto;
   }
 
-  *,
-  *::before,
-  *::after {
-    transition-duration: 0.01ms !important;
+  /* Every element that has a transition, named directly so this rule
+     out-ranks the originals simply by coming later in the file */
+  a,
+  nav a,
+  article,
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  button[type="submit"],
+  .category-menu a,
+  .add-to-cart,
+  .checkout-button,
+  .quantity-button,
+  .text-button,
+  .cart-toast {
+    transition: none;
   }
 
   article:hover,

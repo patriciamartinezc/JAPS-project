@@ -7,7 +7,7 @@ description: JAPS brand guidelines (colour palette, typography, spacing, buttons
 
 JAPS is a small clothing label: everyday clothing made to last. It is designed in Madrid and sewn in Portugal. Its look is warm, editorial and calm: cream paper, a single strong house pink, a serif for headlines and a clean geometric sans for everything else.
 
-The source of truth is `japs.css` (tokens in its `:root` block), `japs-logo.css` and `japs-logo.svg`. If this file and the CSS ever disagree, the CSS wins. Update this skill to match it.
+The source of truth is `styles.css` (tokens in its `:root` block) and `japs-logo.svg`. If this file and the CSS ever disagree, the CSS wins. Update this skill to match it.
 
 ## 1. Colour palette
 
@@ -110,7 +110,7 @@ If you need a secondary action, use a pink text link instead of a second button 
 - Card image: full width, 210px tall, `object-fit: cover`, radius 6px, `--pink-tint` placeholder background.
 - Product photos (`img.product-photo`): square (`aspect-ratio: 1/1`), `object-fit: contain` on white. **The garment is never cropped.**
 - Full-length studio shots add `.portrait`: a 3:4 frame whose leftover space is filled with the photo's own backdrop colour, given per image as `style="--photo-bg: #EBE7E4"` (read it from the photo's side edges).
-- Rows come out even: a section with four cards shows them 2 × 2, and one with five shows a row of three and then a row of two wider cards (handled in `japs.css`, no extra classes needed).
+- Rows come out even: a section with four cards shows them 2 × 2, and one with five shows a row of three and then a row of two wider cards (handled in `styles.css`, no extra classes needed).
 
 **Banner images** directly inside a section: full width, `clamp(220px, 32vw, 360px)` tall, cover, 10px radius. Collages (`img.collage`) keep a 5:3 ratio with `contain` and are never cropped.
 
@@ -162,7 +162,7 @@ Mechanics:
 
 ## 8. Checklist for new JAPS work
 
-1. Link `japs-logo.css` then `japs.css`, plus the Google Fonts link above.
+1. Link `styles.css`, plus the Google Fonts link above.
 2. Use semantic HTML (`header`, `nav` with `aria-current="page"`, `main`, `section`, `article`, `aside`, `footer`) so the existing styles apply without extra classes.
 3. Colours come from tokens only. Pink is the single accent.
 4. Serif for h1–h3, Jost for everything else. UI labels are small, uppercase and widely tracked.
