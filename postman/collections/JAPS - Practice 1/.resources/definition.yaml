@@ -1,5 +1,0 @@
-$kind: collection
-description: Requests for the JAPS API. Start it with `npm start`, then run the collection in order against a freshly started server (`npm run reset` first if you have used the site). Variable `baseUrl` = http://localhost:3000/api. The Create request saves the new id in `garmentId`, and the next requests use it.
-variables:
-  baseUrl: http://localhost:3000/api
-  garmentId: ""
