@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--
+  Session 3 Lab - Structuring a Page (AF2)
+  Web Application Programming (G247) · CUNEF Escuela Politécnica Superior
+  Group: Jimena Gil - Ariadna Calzado - Sofía Rodríguez - Patricia Martínez
+  Page: Stores - addresses, opening hours and contact details
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Visit JAPS in Madrid, Barcelona and Porto. Opening hours, contact details, free repairs while you wait, and our thirty-day returns policy.">
+  <title>Stores and contact – JAPS</title>
+  <link rel="icon" href="japs-logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400&family=Jost:wght@300;400;500;600&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <!-- defer so the script runs once the page has been parsed -->
+  <script src="js/japs-cart.js" defer></script>
+  <script src="js/api.js" defer></script>
+  <script src="js/lists.js" defer></script>
+  <script src="js/crud.js" defer></script>
+  <script src="js/stores.js" defer></script>
+</head>
+<body>
+
+  <header>
+    <!-- Logo + page title as one lockup. Here the logo is the only thing
+         naming the brand, so it carries "JAPS" as its alt text -->
+    <div class="brand">
+      <img class="brand-logo" src="japs-logo.svg" alt="JAPS" width="96" height="96">
+      <h1>Stores</h1>
+    </div>
+    <p>Three shops, all with a tailor on site and free repairs.</p>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collections.html">Collections</a></li>
+        <li><a href="lookbook.html">Lookbook</a></li>
+        <!-- aria-current="page" marks the link for the page we are already on,
+             so screen readers announce it and CSS can highlight it -->
+        <li><a href="stores.html" aria-current="page">Stores</a></li>
+        <li><a href="workshop.html">Workshop</a></li>
+        <!-- The badge is written by japs-cart.js and stays hidden while the
+             cart is empty -->
+        <li><a href="cart.html">Cart <span class="cart-count" data-cart-count hidden>0</span></a></li>
+        <li><a href="login.html">Log in</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="shops">
+      <h2>Where to find us</h2>
+
+      <p>
+        Every JAPS store carries the full collection in every size, so you can
+        try a piece before ordering it. Walk in with a garment that needs mending
+        and our tailor will fix it while you wait, <strong>free of charge</strong>,
+        for as long as you own it.
+      </p>
+
+      <!-- setupCrud() in js/ fills this div: the stores, their states and the form -->
+      <div id="stores-crud"></div>
+    </section>
+
+    <section id="repairs">
+      <h2>Repairs left in our stores</h2>
+      <p>
+        Every repair is free for life. Each one is left by a customer in one
+        of the stores, so both are picked from a list.
+      </p>
+      <div id="repairs-crud"></div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact us</h2>
+
+      <p>
+        The fastest way to reach us is email; we answer every message within one
+        working day. For questions about sizing, tell us your usual size in
+        another brand and we will convert it.
+      </p>
+
+      <ul>
+        <li>General questions: <a href="mailto:hello@japs.example">hello@japs.example</a></li>
+        <li>Sizing and fit: <a href="mailto:fit@japs.example">fit@japs.example</a></li>
+        <li>Repairs and returns: <a href="mailto:repairs@japs.example">repairs@japs.example</a></li>
+        <li>Phone, Madrid store: <a href="tel:+34910000000" title="Calls answered 10:00 to 20:00 CET">+34 910 000 000</a></li>
+      </ul>
+
+      <p>
+        We do not use social media for customer service, but we do post every
+        restock on
+        <a href="https://www.instagram.com/japs.studio">our Instagram account</a>.
+        Already a customer? <a href="login.html">Sign in</a> to see your order
+        history and repair tickets.
+      </p>
+    </section>
+
+    <aside>
+      <h3>Returns</h3>
+      <p>
+        Thirty days, worn or unworn, no questions. Returns are free in
+        <span>Spain</span> and <span>Portugal</span>, and cost 6&nbsp;€ everywhere
+        else in Europe.
+      </p>
+    </aside>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 JAPS. All rights reserved.</p>
+    <ul>
+      <li><a href="index.html">Back to homepage</a></li>
+      <li><a href="stores.html#contact">Contact us</a></li>
+      <li><a href="https://www.instagram.com/japs.studio">Follow JAPS on Instagram</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>

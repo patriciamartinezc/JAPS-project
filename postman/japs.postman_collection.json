@@ -1,0 +1,444 @@
+{
+  "info": {
+    "name": "JAPS - Practice 1",
+    "description": "Requests for the JAPS API. Start it with `npm start`, then run the collection in order against a freshly started server (`npm run reset` first if you have used the site). Variable `baseUrl` = http://localhost:3000/api. The Create request saves the new id in `garmentId`, and the next requests use it.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000/api"
+    },
+    {
+      "key": "garmentId",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Garments - full CRUD",
+      "item": [
+        {
+          "name": "List garments",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"200 OK\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"an array\", () => pm.expect(pm.response.json()).to.be.an(\"array\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/garments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "garments"
+              ]
+            },
+            "description": "All the garments."
+          }
+        },
+        {
+          "name": "Create a garment",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"201 Created\", () => pm.response.to.have.status(201));",
+                  "pm.test(\"Location header\", () => pm.expect(pm.response.headers.get(\"Location\")).to.include(\"/api/garments/\"));",
+                  "pm.collectionVariables.set(\"garmentId\", pm.response.json().id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"The Linen Overshirt\",\n  \"category\": \"shirts\",\n  \"price\": 98,\n  \"material\": \"Washed linen, 190 gsm\",\n  \"inStock\": true,\n  \"image\": \"images/linen-overshirt.png\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/garments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "garments"
+              ]
+            },
+            "description": "Creates a garment. The new id is saved in the variable garmentId."
+          }
+        },
+        {
+          "name": "Get one garment",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"200 OK\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"the garment we created\", () => pm.expect(pm.response.json().name).to.eql(\"The Linen Overshirt\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/garments/{{garmentId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "garments",
+                "{{garmentId}}"
+              ]
+            },
+            "description": "The garment created in the previous request."
+          }
+        },
+        {
+          "name": "Replace the garment",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"200 OK\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"price changed\", () => pm.expect(pm.response.json().price).to.eql(105));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"The Linen Overshirt\",\n  \"category\": \"shirts\",\n  \"price\": 105,\n  \"material\": \"Washed linen, 190 gsm\",\n  \"inStock\": true,\n  \"image\": \"images/linen-overshirt.png\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/garments/{{garmentId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "garments",
+                "{{garmentId}}"
+              ]
+            },
+            "description": "PUT replaces the whole garment, so every field is sent again."
+          }
+        },
+        {
+          "name": "Delete the garment",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"204 No Content\", () => pm.response.to.have.status(204));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/garments/{{garmentId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "garments",
+                "{{garmentId}}"
+              ]
+            },
+            "description": "Deletes it. There is no body in the answer."
+          }
+        },
+        {
+          "name": "Get it again (404)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"404 Not Found\", () => pm.response.to.have.status(404));",
+                  "pm.test(\"JSON error\", () => pm.expect(pm.response.json().error).to.eql(\"Garment not found\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/garments/{{garmentId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "garments",
+                "{{garmentId}}"
+              ]
+            },
+            "description": "The garment is gone."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Validation, filters and stats",
+      "item": [
+        {
+          "name": "Invalid POST (400)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"400 Bad Request\", () => pm.response.to.have.status(400));",
+                  "pm.test(\"every problem at once\", () => pm.expect(pm.response.json().errors.length).to.be.above(2));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"\",\n  \"category\": \"hats\",\n  \"price\": 0,\n  \"material\": \"Wool\",\n  \"inStock\": \"yes\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/garments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "garments"
+              ]
+            },
+            "description": "Wrong on purpose: the answer lists all the problems, each with its field."
+          }
+        },
+        {
+          "name": "Search and filter",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"200 OK\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"only jackets in stock\", () => pm.expect(pm.response.json().every((g) => g.category === \"jackets\" && g.inStock)).to.be.true);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/garments?category=jackets&inStock=true",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "garments"
+              ],
+              "query": [
+                {
+                  "key": "category",
+                  "value": "jackets"
+                },
+                {
+                  "key": "inStock",
+                  "value": "true"
+                }
+              ]
+            },
+            "description": "Filters combine: category and inStock."
+          }
+        },
+        {
+          "name": "Search by name",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"200 OK\", () => pm.response.to.have.status(200));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/garments?search=TRENCH",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "garments"
+              ],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "TRENCH"
+                }
+              ]
+            },
+            "description": "Case-insensitive match on the name."
+          }
+        },
+        {
+          "name": "Invalid filter (400)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"400 Bad Request\", () => pm.response.to.have.status(400));",
+                  "pm.test(\"field category\", () => pm.expect(pm.response.json().errors[0].field).to.eql(\"category\"));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/garments?category=hats",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "garments"
+              ],
+              "query": [
+                {
+                  "key": "category",
+                  "value": "hats"
+                }
+              ]
+            },
+            "description": "A category outside the closed set is rejected."
+          }
+        },
+        {
+          "name": "Stats",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"200 OK\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"has the summary\", () => { const s = pm.response.json(); pm.expect(s).to.have.all.keys(\"total\", \"inStock\", \"averagePrice\", \"byCategory\"); });"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/garments/stats",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "garments",
+                "stats"
+              ]
+            },
+            "description": "Computed on every request, never stored."
+          }
+        },
+        {
+          "name": "Unknown route (404)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"404 JSON\", () => { pm.response.to.have.status(404); pm.expect(pm.response.json().error).to.exist; });"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/nothing-here",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "nothing-here"
+              ]
+            },
+            "description": "Anything nobody answers is a JSON 404."
+          }
+        }
+      ]
+    }
+  ]
+}

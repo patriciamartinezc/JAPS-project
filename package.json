@@ -1,18 +1,20 @@
 {
-  "name": "japs-project",
+  "name": "practice1-japs",
   "version": "1.0.0",
-  "description": "Coursework site for Web Application Programming (G247), CUNEF Escuela Politécnica Superior.",
+  "description": "Practice 1 (Foundations API) for Web Application Programming (G247), CUNEF Escuela Politécnica Superior. JAPS: Express REST API on a SQLite database plus a vanilla JavaScript front end.",
   "main": "src/server.js",
   "scripts": {
-    "start": "node --watch src/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "reset": "node -e \"require('fs').rmSync('japs.db', { force: true }); console.log('japs.db deleted: the next npm start begins from the seed data')\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/patriciamartinezc/JAPS-project.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jimena Gil, Ariadna Calzado, Sofía Rodríguez, Patricia Martínez",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
@@ -21,5 +23,8 @@
   "homepage": "https://github.com/patriciamartinezc/JAPS-project#readme",
   "dependencies": {
     "express": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
