@@ -1,0 +1,14 @@
+$kind: http-request
+description: "Filters combine: category and inStock."
+url: "{{baseUrl}}/garments?category=jackets&inStock=true"
+method: GET
+queryParams:
+  category: jackets
+  inStock: "true"
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("200 OK", () => pm.response.to.have.status(200));
+      pm.test("only jackets in stock", () => pm.expect(pm.response.json().every((g) => g.category === "jackets" && g.inStock)).to.be.true);
+    language: text/javascript
+order: 2000

@@ -1,0 +1,24 @@
+$kind: http-request
+description: PUT replaces the whole garment, so every field is sent again.
+url: "{{baseUrl}}/garments/{{garmentId}}"
+method: PUT
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "name": "The Linen Overshirt",
+      "category": "shirts",
+      "price": 105,
+      "material": "Washed linen, 190 gsm",
+      "inStock": true,
+      "image": "images/linen-overshirt.png"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("200 OK", () => pm.response.to.have.status(200));
+      pm.test("price changed", () => pm.expect(pm.response.json().price).to.eql(105));
+    language: text/javascript
+order: 4000

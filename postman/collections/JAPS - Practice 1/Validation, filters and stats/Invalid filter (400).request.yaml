@@ -1,0 +1,13 @@
+$kind: http-request
+description: A category outside the closed set is rejected.
+url: "{{baseUrl}}/garments?category=hats"
+method: GET
+queryParams:
+  category: hats
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("400 Bad Request", () => pm.response.to.have.status(400));
+      pm.test("field category", () => pm.expect(pm.response.json().errors[0].field).to.eql("category"));
+    language: text/javascript
+order: 4000

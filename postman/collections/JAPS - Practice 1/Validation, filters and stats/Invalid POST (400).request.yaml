@@ -1,0 +1,23 @@
+$kind: http-request
+description: "Wrong on purpose: the answer lists all the problems, each with its field."
+url: "{{baseUrl}}/garments"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "name": "",
+      "category": "hats",
+      "price": 0,
+      "material": "Wool",
+      "inStock": "yes"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("400 Bad Request", () => pm.response.to.have.status(400));
+      pm.test("every problem at once", () => pm.expect(pm.response.json().errors.length).to.be.above(2));
+    language: text/javascript
+order: 1000

@@ -1,0 +1,9 @@
+$kind: http-request
+description: Deletes it. There is no body in the answer.
+url: "{{baseUrl}}/garments/{{garmentId}}"
+method: DELETE
+scripts:
+  - type: afterResponse
+    code: pm.test("204 No Content", () => pm.response.to.have.status(204));
+    language: text/javascript
+order: 5000
