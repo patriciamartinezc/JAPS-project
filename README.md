@@ -1387,6 +1387,14 @@ The first folder is a full CRUD on garments: list, create (it saves the new id i
 - **Why `node:sqlite` and not a package.** It is built into Node 22, so `npm install` still installs only Express. We first tried `better-sqlite3`, but it has to be compiled during install and that failed on a clean machine.
 - **Deleting does not cascade.** Deleting a garment does not delete its reviews or order items; their tables show `#7` instead of a name. It keeps the practice simple, and SQLite foreign keys with `ON DELETE` rules would be the real fix.
 
+## Known limitations
+
+- **No cascade delete:** deleting a customer leaves its orders with a customerId that no longer exists. This is a deliberate choice; the brief does not ask for it.
+- **The cart is not connected to the API:** the shopping cart in `cart.html` uses localStorage; orders are managed with the CRUD forms.
+- **No authentication:** the login page is only a front-end form.
+- **SQLite needs Node 22.5 or newer:** with an older version the server still starts, but the data is kept in memory and a warning is printed.
+- **Port:** the server uses port 3000 by default; set the `PORT` environment variable to change it.
+
 ## AI
 
 See AI/ai-report.docx.
